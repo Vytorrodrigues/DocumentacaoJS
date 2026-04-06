@@ -1,4 +1,4 @@
-# Documenta-o-JSProject
+# DocumentaçãoJS
 
 - Documentação de todo conteúdo de Javascript que estudei até agora
 - Está documentação é para organizar o conteúdo e facilitar nos estudos e revisões futuras
