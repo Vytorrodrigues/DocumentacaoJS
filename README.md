@@ -505,10 +505,17 @@ const dateIntl = Intl.DateFormat("padrãoLocal").format(new Date()); - pega  a h
 # PROGRAMAÇÃO ORIENTADA A OBJETO OU POO:
 
 - Diferente da abordagem procedural(o código é gerado de cima pra baixo), permite códigos escaláveis e com uma boa qualidade de vida, permitindo manutenção e aplicabilidade
-- Usamos funções para atribuir responsabilidades
+- Usamos métodos para atribuir responsabilidades
 - Generalizar com intuito de reuso
-- **MODULARIZAÇÃO DO CÓDIGO**: Fazer um arquivo com classes e métodos e fazer os imports dessas classes
+
+
+# **MODULARIZAÇÃO DO CÓDIGO**: 
+
+- Encapsulamento do código, é onde atribuímos responsabilidades
+-Fazer um arquivo com classes e métodos e fazer os imports dessas classes
 - Antes de fazer as importações, colocar dentro da tag script no código HTML o atributo: type="module"
+- **Export**: usado para exportar as modularizações
+- **Import**: usado para importar as modularizações
 ex: 
     export default function;
     import function from ./'nome do arquivo';
@@ -518,6 +525,17 @@ ex:
         nomeDoQueVouexportar: método1,
         nomeDoQueVouexportar: método2,
     }
+
+  import nome do arquivo from "./nomedoArquivo.js";
+
+- **as**: permite mudar o nome das importações ou exportações ex: functionA as functionB
+- Devemos sempre respeitar os nomes das funções nas exportações/ importações
+- Export default - define um padrão / uma responsabilidade / objeto de funções
+- named - função exportada pelo nome
+- Podemos exportar todo conteúdo usando *
+- Usamos {} para importar funções específicas
+- É possível exportar a função diretamente ex:  export function(){};
+- Ao exportar classes devemos instanciar o metódo em um objeto  ex:  import classA from "./arquivo.js";   const a = new classA();
 
 # SPREADS, RESTS:
 
