@@ -1,5 +1,6 @@
 # DocumentaçãoJS
 
+- **RECOMENDO VER NO MODO CODE PARA COMPREENDER OS EXEMPLOS DE CÓDIGOS**
 - Documentação de todo conteúdo de Javascript que estudei até agora
 - Está documentação é para organizar o conteúdo e facilitar nos estudos e revisões futuras
 - Vocês podem adicionar as anotações de vocês, o objetivo é deixar essa documentação robusta e de fácil entendimento para todos
