@@ -486,6 +486,83 @@ const dateIntl = Intl.DateFormat("padrãoLocal").format(new Date()); - pega  a h
 - **JSONparse()**: transforma um texto JSON em objeto
 - **JSONstringify()**: Transforma um objeto em JSON
 
+# Funções assíncronas
+
+- O JS por natureza funciona de forma single thread, executa uma coisa por vez
+- As funções assíncronas são resolvidas enquanto o Js executa outra função
+- Retornam uma promise (promeça/resultado) podendo ser um sucesso ou não
+- **async**: usado para dizer que uma função é asssíncrona 
+- **await**: pausa a função e espera a resolução da promise
+- async e await devem ser usados juntos
+ex: function asyncFunction(){
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const inSucess = true;
+        if (inSucess){
+          resolve("Conection is ok!");
+        } else {
+          reject("Conection is not stated!")
+       };
+    }, 3000);
+  });
+};
+//tratamento de erro
+asyncFunction().then((response) => {
+   console.log(`Sucesso ${response}`);
+}).catch((error) => {
+   console.log(`Error: ${error}`)
+}).finally(() => {
+   console.log("Execution ended");
+});
+- **then()**: é usado para capturar a resposta da promise
+- **catch()**: usado para capturar o erro
+- **finally()**: executado independente de dar certo ou errado, é o final da execução do código
+//Definindo asíncronismo com async e await para tratamento
+async function fetch(){
+  try{
+   const response = await asyncFunction();
+   console.log(response);
+  }catch(error){
+    console.log(`Error: ${error}`);
+  }finally{
+    console.log("Execution ended");
+  };
+};
+fetch();
+- O assync tbm pode ser usado de outra forma: const fecth = async () => {}; / o await segue da mesma forma de antes
+- Promise.resolve(true/false).then().catch().finally(); seria outra forma de fazer promise com tratamento de erro
+
+
+# Event Loop e execução de código
+
+- Js single thread: executa uma linha por vez (procedural, sincronismo, o código é executado de cima para baixo, empilhando e desempilhando funções quando necessário)
+- Js no blocking: não trava o contexto da execução, por isso usamos assíncronismo nas funções, para lidar com a execução
+- Concurrent: tarefas assíncronas concorrem umas com as outras. O modelo de concorrência do JS é em event loop
+- **Event loop**: gerencia a execução do código assíncrono e eventos em um único thread
+- Execução dos códigos:
+- **Callstack** Armazena as chamadas de função em execução, quando a função é chamada ela empillha em pilha, tudo passa pela callstack podendo nela ser executado nela. O que não for passa p/ WEB API
+- **WEB API**: utiliza outros recursos (DOM, setTimeout, fetch)
+- **Callbackqueue**: fila que armazena callback e eventos que aguardam ser chamados p/ execução
+- **EVENT LOOP**: verifica a pilha de callstack e callback, se houver um espaço na calltscak ele move da fila de callback para pilha de chamadas. Antes de verificar a fila de callbacks, o eventloop executa todas as microtasks pendentes
+- A pilha de chamadas é constituida de **Microtask** e **Macrotask**
+- **Microtask**: tarefas de alta prioridade para serem executadas, executada antes da macrotask(temporizadores e promises)
+- **Macrotask**: tarefas de menor prioridade, callback de eventos, setTimeout, setInterval
+- **queueMicrotask()** usado para criar microtask e adiciona-lá a fila de execução
+- Ordem de execução: código síncrono, microtask, promise e temporizadores
+ex:
+   console.log(1);
+  queueMicrotask(() => {
+    console.log(2);
+  });
+  setTimeout(() => {
+    console.log(3);
+  });
+  console.log(4);
+  Promise.resolve(true).then(() => {
+    console.log(5);
+  });
+- Qual seria o resultado desse código?
+
 # Requisições HTTP:
 
 - Requisições em APIS
