@@ -573,32 +573,31 @@ ex:
 
 - Fazendo solicitações em uma API:
 - Assim nós fazemos a solicitação dos seus itens e imprimimos no console
-- ex1: async function nomeFuncaoFetch(){
-- const response = await fetch(linkAPI);
-- const data = await response.json();
-- console.log(data);
-- };
+  ex1: async function nomeFuncaoFetch(){
+  const response = await fetch(linkAPI);
+  const data = await response.json();
+  console.log(data);
+  };
 - Ambas as duas formas são utilizadas, mas ao quando estamos trabalando com UserEffect, não podeos utilizar async e await, por isso utilizamos o segundo e não o primeiro exemplo
 - ex2: fetch(linkAPI).then((response) => {response.json()}).then((data) => {console.log(data)});
 
 - Modificação em uma API:
 - Devemos criar um form para adicionar elementos e selecionar cada elemento do form, além de acrescentar um evento do tipo submit
-- addEventListener("submit", async (event) => {
-- eventPreventDefault();
-- await fetch(linkAPI, {
-- method: "POST",
-- headers: {
-- "Content-Type": "aplication/json"
-- },
-- body: JSON.stringfy({
-- id: new Date().getTime().toString(),
-- name: nameObjetoA.value,
-- elementB: nameObjectB.value
-- })
-- });
--
-- await nomeFuncaoFetch();
-- });
+  addEventListener("submit", async (event) => {
+  eventPreventDefault();
+  await fetch(linkAPI, {
+  method: "POST",
+  headers: {
+  "Content-Type": "aplication/json"
+  },
+  body: JSON.stringfy({
+  id: new Date().getTime().toString(),
+  name: nameObjetoA.value,
+ elementB: nameObjectB.value
+})
+});
+ await nomeFuncaoFetch();
+});
 
 # Requisições HTTP:
 
