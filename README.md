@@ -564,6 +564,42 @@ ex:
   });
 - Qual seria o resultado desse código?
 
+# API:
+
+- Aplication Progamming Interface
+- Interface que disponibiliza um conjunto de funcionalidade p/ serem utilizadas
+- Utilização de rotas p/ comunicarção
+- Métodos: GET(requisição), POST(adicionar), PUT(atualizar), DELETE(deletar) e PATCH(atualizar parcialmente)
+
+- Fazendo solicitações em uma API:
+- Assim nós fazemos a solicitação dos seus itens e imprimimos no console
+- ex1: async function nomeFuncaoFetch(){
+- const response = await fetch(linkAPI);
+- const data = await response.json();
+- console.log(data);
+- };
+- Ambas as duas formas são utilizadas, mas ao quando estamos trabalando com UserEffect, não podeos utilizar async e await, por isso utilizamos o segundo e não o primeiro exemplo
+- ex2: fetch(linkAPI).then((response) => {response.json()}).then((data) => {console.log(data)});
+
+- Modificação em uma API:
+- Devemos criar um form para adicionar elementos e selecionar cada elemento do form, além de acrescentar um evento do tipo submit
+- addEventListener("submit", async (event) => {
+- eventPreventDefault();
+- await fetch(linkAPI, {
+- method: "POST",
+- headers: {
+- "Content-Type": "aplication/json"
+- },
+- body: JSON.stringfy({
+- id: new Date().getTime().toString(),
+- name: nameObjetoA.value,
+- elementB: nameObjectB.value
+- })
+- });
+-
+- await nomeFuncaoFetch();
+- });
+
 # Requisições HTTP:
 
 - Requisições em APIS
@@ -578,7 +614,35 @@ ex:
 - **formData()**: retorna o resultado da requisição como um objeto do tipo FormData
 - **arrayBuffer()**: retorna a resposta da requisição como um ArrayBuffer
 - **blob()**: retorna a resposta da requisição como um Blob/ blob(Binary Large Object: é um objeto com dados binários brutos e imutáveis ex: arquivo de imagem, video, audio e outros dados não textuais)
- -**text()**: retorna a resposta da requisição como uma string
+-**text()**: retorna a resposta da requisição como uma string
+
+# Gerenciador de pacotes
+
+- Ferramentas que permitem instalar e atualizar as depen~encias das bibliotecas/pacotes
+- **NPM** (Node Package Manager): usado em node, usado para gerenciar pacotes em Javascript
+- Utiliza convenções p/ gerenciar a resolução das dependênciass e garantir a compatibilidade das versões, garante longividade da aplicação
+- **~**: Atualização automática de versões compativeis, recebe patches
+- **^**: Instalar a versão mais recente compatível sem incompatibilidade
+- **@**: Instalação de versões específicas dos pacotes
+- Rodando uma API com NPM:
+- No terminal damos: npm install json-server/ npm i json-server //requisição para instalar o pacote npm de rodar API
+- Após fazer isso, vamos na pasta package.json e colocamos "scripts": {"server": "json-server nomeDoArquivo.json(API)"}
+- Se quisermos mudar a porta, basta colocar no "server": "--port = numeroDaPorta"
+- Para rodar, basta rodar no terminal npm run server e teremos a API rodando, e no terminal recebemos o link do localhost
+- O navageador por padrão faz requisições do tipo get 
+
+# Dependências:
+
+- Produção: necessária para execução do projeto, fase de uso do user
+- Desenvolvimento: usado no período de desenvolvimento da aplicação
+
+# Versionamento semântico
+
+- Padrão de versões, mostra o que mudou
+- ex: 8.9.1 / major, minor e patch
+- **Major**: versão principal, atualizações podem causar incompatibilidade com versões anteriores, grande atualização
+- **Minor**: atualização de funcionalidades, novas funcionalidades. Não gera imcompatibilidade
+- **Patch**: correções de bugs, compátiveis com as versões anteriores
 
 # PROGRAMAÇÃO ORIENTADA A OBJETO OU POO:
 
